@@ -12,10 +12,10 @@ public class Constants {
         public static final boolean kIntakeInverted = false;
 
         // Controller bindings
-        public static final int kShooterInButton = 1;
-        public static final int kShooterOutButton = 2;
-        public static final int kIntakeInButton = 3;
-        public static final int kIntakeOutButton = 4;
+        //public static final int kShooterInButton = 1;
+        public static final int kShooterOutButton = 5;
+        public static final int kIntakeInButton = 4;
+        public static final int kIntakeOutButton = 6;
     }
 
     public static class AutoConstants {
