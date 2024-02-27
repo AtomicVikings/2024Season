@@ -6,6 +6,7 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.SteerRequestType;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Subsystems.CommandSwerveDrivetrain;
 import frc.robot.generated.TunerConstants;
 
@@ -31,10 +32,10 @@ public class DriveStraightAutoCmd extends Command {
 
     @Override
     public void execute() {
-       if (timer.get() < 2.2) {
+       if (timer.get() < AutoConstants.kTimeForward) {
         swerveSubsystem.setControl(
             m_driveRequest
-            .withVelocityX(TunerConstants.kSpeedAt12VoltsMps * .3) 
+            .withVelocityX(TunerConstants.kSpeedAt12VoltsMps * AutoConstants.kSpeedForward) 
             .withVelocityY(0) 
             .withRotationalRate(0)
         );
