@@ -8,8 +8,8 @@ public class Constants {
         public static final int kIntakeId = 15;
         
         // Mechanism Configs
-        public static final boolean kShooterInverted = false;
-        public static final boolean kIntakeInverted = false;
+        public static final boolean kShooterInverted = true;
+        public static final boolean kIntakeInverted = true;
 
         // Controller bindings
         //public static final int kShooterInButton = 1;
