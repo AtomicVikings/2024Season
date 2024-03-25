@@ -57,6 +57,7 @@ public class RobotContainer {
 
 //        if (shooterIn.get()) {
  // mechSubsystem.setShooter(1);
+ 
 
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
