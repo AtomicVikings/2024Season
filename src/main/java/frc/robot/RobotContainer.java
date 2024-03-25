@@ -17,9 +17,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Commands.DriveStraightAutoCmd;
+import frc.robot.Commands.ElevatorJoystickCmd;
 import frc.robot.Commands.MechJoystickCmd;
+import frc.robot.Constants.ElevatorConstants;
 import frc.robot.Constants.MechConstants;
 import frc.robot.Subsystems.CommandSwerveDrivetrain;
+import frc.robot.Subsystems.ElevatorSubsystem;
 import frc.robot.Subsystems.MechSubsystem;
 import frc.robot.generated.TunerConstants;
 
@@ -40,6 +43,7 @@ public class RobotContainer {
 
   // ------------- OUR CODE :D --------------------------//
   private final MechSubsystem mechSubsystem = new MechSubsystem();
+  private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   private final Joystick mechJoystick = new Joystick(1);
 
   // Auto
@@ -75,6 +79,11 @@ public class RobotContainer {
       () -> mechJoystick.getRawButton(MechConstants.kShooterOutButton),
       () -> mechJoystick.getRawButton(MechConstants.kIntakeInButton),
       () -> mechJoystick.getRawButton(MechConstants.kIntakeOutButton)));
+
+    elevatorSubsystem.setDefaultCommand(new ElevatorJoystickCmd(
+      elevatorSubsystem,
+      () -> mechJoystick.getRawButton(ElevatorConstants.kElevatorUpButton), 
+      () -> mechJoystick.getRawButton(ElevatorConstants.kElevatorDownButton)));
   }
 
   public RobotContainer() {

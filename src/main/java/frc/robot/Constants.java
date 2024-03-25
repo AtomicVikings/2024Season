@@ -22,4 +22,11 @@ public class Constants {
         public static final double kTimeForward = 2.2; // Time forward in seconds
         public static final double kSpeedForward = .3; // Speed forward (no need to change).
     }
+
+    public static class ElevatorConstants {
+        public static final boolean kElevatorInverted = false;
+        public static final int kElevatorPrimaryId = 20;
+        public static final int kElevatorUpButton = 1;
+        public static final int kElevatorDownButton = 2;
+    }
 }
