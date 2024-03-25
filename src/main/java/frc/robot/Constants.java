@@ -25,7 +25,9 @@ public class Constants {
 
     public static class ElevatorConstants {
         public static final boolean kElevatorInverted = false;
-        public static final int kElevatorPrimaryId = 20;
+        public static final int kElevatorPrimaryId = 18;
+        public static final int kElevatorSecondaryId = 19;
+
         public static final int kElevatorUpButton = 1;
         public static final int kElevatorDownButton = 2;
     }
