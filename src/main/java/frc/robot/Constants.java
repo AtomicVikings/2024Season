@@ -21,6 +21,7 @@ public class Constants {
     public static class AutoConstants {
         public static final double kTimeForward = 2.2; // Time forward in seconds
         public static final double kSpeedForward = .3; // Speed forward (no need to change).
+        public static final double kAutoShooterTimer = 1.3;
     }
 
     public static class ElevatorConstants {

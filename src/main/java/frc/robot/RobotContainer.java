@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Commands.DriveStraightAutoCmd;
 import frc.robot.Commands.ElevatorJoystickCmd;
 import frc.robot.Commands.MechJoystickCmd;
+import frc.robot.Commands.ShooterAutoCmd;
 import frc.robot.Constants.ElevatorConstants;
 import frc.robot.Constants.MechConstants;
 import frc.robot.Subsystems.CommandSwerveDrivetrain;
@@ -50,6 +51,8 @@ public class RobotContainer {
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
   private final Command kNoAuto = null;
   private final Command kDriveForward = new DriveStraightAutoCmd(drivetrain);
+  private final Command kShooterAuto = new ShooterAutoCmd(mechSubsystem);
+  private final Command kAllAuto = new ShooterAutoCmd(mechSubsystem).andThen(kDriveForward);
 
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
@@ -91,6 +94,8 @@ public class RobotContainer {
 
     // Auto Setup
     m_chooser.setDefaultOption("Drive Forward", kDriveForward);
+    m_chooser.addOption("Shooter", kShooterAuto);
+    m_chooser.addOption("All Autos", kAllAuto);
     m_chooser.addOption("NoAuto", kNoAuto);
     SmartDashboard.putData(m_chooser);
   }
