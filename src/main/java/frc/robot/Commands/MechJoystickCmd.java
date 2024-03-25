@@ -6,19 +6,24 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.MechSubsystem;
 
 public class MechJoystickCmd extends Command {
-    Supplier<Boolean> shooterIn, shooterOut, intakeIn, intakeOut;
+    Supplier<Boolean> shooterIn, shooterOut, intakeIn, intakeOut, elevatorUp, elevatorDown;
     MechSubsystem mechSubsystem;
+    
 
     public MechJoystickCmd(MechSubsystem mechSubsystem,
                             Supplier<Boolean> shooterIn,
                             Supplier<Boolean> shooterOut,
                             Supplier<Boolean> intakeIn,
-                            Supplier<Boolean> intakeOut) {
+                            Supplier<Boolean> intakeOut,
+                            Supplier<Boolean> elevatorUp,
+                            Supplier<Boolean> elevatorDown) {
         this.mechSubsystem = mechSubsystem;
         this.shooterIn = shooterIn;
         this.shooterOut = shooterOut;
         this.intakeIn = intakeIn;
         this.intakeOut = intakeOut;
+        this.elevatorUp = elevatorUp;
+        this.elevatorDown = elevatorDown;
         addRequirements(mechSubsystem);
     }
 
@@ -44,12 +49,21 @@ public class MechJoystickCmd extends Command {
         } else {
             mechSubsystem.setIntake(0);
         }
+
+        if (elevatorUp.get()) {
+            mechSubsystem.setElevator(.1);
+        } else if (elevatorDown.get()) {
+            mechSubsystem.setElevator(-.1);
+        }  else {
+            mechSubsystem.setElevator(0);
+        }
     }
 
     @Override
     public void end(boolean interrupted) {
         mechSubsystem.setIntake(0);
         mechSubsystem.setShooter(0);
+        mechSubsystem.setElevator(0);
     }
 
     @Override

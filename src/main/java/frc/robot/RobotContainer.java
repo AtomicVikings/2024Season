@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Commands.DriveStraightAutoCmd;
 import frc.robot.Commands.MechJoystickCmd;
+import frc.robot.Commands.ShooterAutoCmd;
 import frc.robot.Constants.MechConstants;
 import frc.robot.Subsystems.CommandSwerveDrivetrain;
 import frc.robot.Subsystems.MechSubsystem;
@@ -40,12 +41,22 @@ public class RobotContainer {
 
   // ------------- OUR CODE :D --------------------------//
   private final MechSubsystem mechSubsystem = new MechSubsystem();
+  //private final MechSubsystem mechSubsystem1 = new MechSubsystem();
   private final Joystick mechJoystick = new Joystick(1);
 
   // Auto
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
   private final Command kNoAuto = null;
   private final Command kDriveForward = new DriveStraightAutoCmd(drivetrain);
+  //private final int kShooterJoystickThing = MechConstants.kShooterOutButton;
+  private final Command kShooterAuto = new ShooterAutoCmd(mechSubsystem);
+  //private final Command kAutoMan = kShooterAuto.andThen(kDriveForward);
+  
+  //ShooterOutButton(kShooterJoystickThin
+
+
+//        if (shooterIn.get()) {
+ // mechSubsystem.setShooter(1);
 
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
@@ -74,14 +85,30 @@ public class RobotContainer {
       () -> mechJoystick.getPOV() == 0,
       () -> mechJoystick.getRawButton(MechConstants.kShooterOutButton),
       () -> mechJoystick.getRawButton(MechConstants.kIntakeInButton),
-      () -> mechJoystick.getRawButton(MechConstants.kIntakeOutButton)));
+      () -> mechJoystick.getRawButton(MechConstants.kIntakeOutButton),
+      () -> mechJoystick.getRawButton(MechConstants.kElevatorUpButton),
+      () -> mechJoystick.getRawButton(MechConstants.kElevatorDownButton)));
+
+    
+    //mechSubsystem1.setShooter(-1);
+   // mechSubsystem1.setIntake(-1);
+   // mechSubsystem.addChild(mechSubsystem, ()-> );
+    //mechSubsystem1.setShooter(0);
+    //mechSubsystem1.setShooter(-1);
+    //mechSubsystem1.setIntake(0);
+    
+    
   }
 
   public RobotContainer() {
     configureBindings();
 
     // Auto Setup
-    m_chooser.setDefaultOption("Drive Forward", kDriveForward);
+    m_chooser.setDefaultOption("AllAuto", kShooterAuto.andThen(kDriveForward));
+    m_chooser.setDefaultOption("ShootIt", kShooterAuto);
+    //m_chooser.addOption("AHHHHH", automan());
+    //m_chooser.addOption("AutoDefault", kAutoMan);
+    m_chooser.addOption("Drive Forward", kDriveForward);
     m_chooser.addOption("NoAuto", kNoAuto);
     SmartDashboard.putData(m_chooser);
   }
