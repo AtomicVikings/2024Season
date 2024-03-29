@@ -78,10 +78,8 @@ public class RobotContainer {
     // Mechanism Controls
     mechSubsystem.setDefaultCommand(new MechJoystickCmd(
       mechSubsystem,
-      () -> mechJoystick.getPOV() == 0,
-      () -> mechJoystick.getRawButton(MechConstants.kShooterOutButton),
-      () -> mechJoystick.getRawButton(MechConstants.kIntakeInButton),
-      () -> mechJoystick.getRawButton(MechConstants.kIntakeOutButton)));
+      () -> mechJoystick.getPOV() == 180,
+      () -> mechJoystick.getPOV() == 0));
 
     elevatorSubsystem.setDefaultCommand(new ElevatorJoystickCmd(
       elevatorSubsystem,

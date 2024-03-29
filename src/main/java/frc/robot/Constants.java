@@ -9,18 +9,14 @@ public class Constants {
         
         // Mechanism Configs
         public static final boolean kShooterInverted = true;
-        public static final boolean kIntakeInverted = true;
+        public static final boolean kIntakeInverted = false;
+        public static final double kShooterPowerOffset = 1;
 
-        // Controller bindings
-        //public static final int kShooterInButton = 1;
-        public static final int kShooterOutButton = 5;
-        public static final int kIntakeInButton = 4;
-        public static final int kIntakeOutButton = 6;
     }
 
     public static class AutoConstants {
-        public static final double kTimeForward = 2.2; // Time forward in seconds
-        public static final double kSpeedForward = .3; // Speed forward (no need to change).
+        public static final double kTimeForward = 1.3; // Time forward in seconds
+        public static final double kSpeedForward = .37; // Speed forward (no need to change).
         public static final double kAutoShooterTimer = 1.3;
     }
 
@@ -29,7 +25,7 @@ public class Constants {
         public static final int kElevatorPrimaryId = 18;
         public static final int kElevatorSecondaryId = 19;
 
-        public static final int kElevatorUpButton = 1;
-        public static final int kElevatorDownButton = 2;
+        public static final int kElevatorUpButton = 4;
+        public static final int kElevatorDownButton = 1;
     }
 }

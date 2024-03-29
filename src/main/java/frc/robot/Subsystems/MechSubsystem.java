@@ -9,7 +9,7 @@ import frc.robot.Constants.MechConstants;
 public class MechSubsystem extends SubsystemBase{
     private final CANSparkMax shooterPrimary = new CANSparkMax(MechConstants.kShooterPrimaryId, MotorType.kBrushless);
     private final CANSparkMax shooterSecondary = new CANSparkMax(MechConstants.kShooterSecondaryId, MotorType.kBrushless);
-    private final CANSparkMax intake = new CANSparkMax(MechConstants.kIntakeId, MotorType.kBrushed);
+    private final CANSparkMax intake = new CANSparkMax(MechConstants.kIntakeId, MotorType.kBrushless);
 
     public MechSubsystem() {
         shooterSecondary.setInverted(MechConstants.kShooterInverted);
@@ -17,12 +17,10 @@ public class MechSubsystem extends SubsystemBase{
         intake.setInverted(MechConstants.kIntakeInverted);
     }
 
-    public void setIntake(double setValue) {
-        intake.set(setValue);
-    }
-
     public void setShooter(double setValue) {
+        setValue *= MechConstants.kShooterPowerOffset;
         shooterPrimary.set(setValue);
         shooterSecondary.set(setValue);
+        intake.set(setValue * .5);
     }
 }

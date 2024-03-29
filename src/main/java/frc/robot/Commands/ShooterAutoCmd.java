@@ -33,9 +33,9 @@ public class ShooterAutoCmd extends Command {
     @Override
     public void execute() {
         if (timer.get() < AutoConstants.kAutoShooterTimer) {
-        mechSubsystem.setShooter(-1);
+            mechSubsystem.setShooter(-1);
         } else {
-        finished = true;
+            finished = true;
         }
     }
 
