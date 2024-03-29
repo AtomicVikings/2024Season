@@ -12,57 +12,45 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Subsystems.MechSubsystem;
 
 public class ShooterAutoCmd extends Command {
-  /** Creates a new ShooterAutoCmd. */
-  //private boolean shooterOut;
-  //int shooterOut;
     MechSubsystem mechSubsystem;
-  Timer timer = new Timer();
-  private boolean finished;
+    Timer timer = new Timer();
+    private boolean finished;
 
-  public ShooterAutoCmd(MechSubsystem mechSubsystem
-  //Boolean shootOut
-  ) 
-  {
-    // Use addRequirements() here to declare subsystem dependencies.
-    this.mechSubsystem = mechSubsystem;
-    addRequirements(mechSubsystem);
+    public ShooterAutoCmd(MechSubsystem mechSubsystem) {
+        // Use addRequirements() here to declare subsystem dependencies.
+        this.mechSubsystem = mechSubsystem;
+        addRequirements(mechSubsystem);
+    }
 
-  }
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+        finished = false;
+        timer.start();
+    }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-    finished = false;
-    timer.start();
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        if (timer.get() < AutoConstants.kAutoShooterTimer) {
+            mechSubsystem.setShooter(-1);
+        } else {
+            finished = true;
+        }
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    if (timer.get() < AutoConstants.kshootautotimer) {
-      mechSubsystem.setShooter(-1);
-  } else{
-      //mechSubsystem1.setShooter(0);
-      finished = true;
-      
-  } 
-
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-
-    mechSubsystem.setShooter(0);
-    timer.restart();
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+        mechSubsystem.setShooter(0);
+        timer.restart();
         timer.stop();
-//finished = true;
+    }
 
-  }
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return finished;
-  }
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return finished;
+    }
 }
+
