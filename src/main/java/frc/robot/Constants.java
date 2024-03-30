@@ -6,13 +6,12 @@ public class Constants {
         public static final int kShooterPrimaryId = 16;
         public static final int kShooterSecondaryId = 17;
         public static final int kIntakeId = 15;
-        public static final int kElevatorPrimaryId = 18;
-        public static final int kElevatorSecondaryId = 19;
         
         // Mechanism Configs
         public static final boolean kShooterInverted = true;
         public static final boolean kIntakeInverted = false;
         public static final double kShooterPowerOffset = 1;
+
     }
 
     public static class AutoConstants {

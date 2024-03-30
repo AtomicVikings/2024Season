@@ -53,4 +53,3 @@ public class ShooterAutoCmd extends Command {
         return finished;
     }
 }
-

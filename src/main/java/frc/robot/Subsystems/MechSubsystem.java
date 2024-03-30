@@ -11,13 +11,10 @@ public class MechSubsystem extends SubsystemBase{
     private final CANSparkMax shooterSecondary = new CANSparkMax(MechConstants.kShooterSecondaryId, MotorType.kBrushless);
     private final CANSparkMax intake = new CANSparkMax(MechConstants.kIntakeId, MotorType.kBrushless);
 
-
     public MechSubsystem() {
         shooterSecondary.setInverted(MechConstants.kShooterInverted);
         shooterPrimary.setInverted(MechConstants.kShooterInverted);
-        shooterThird.setInverted(false);
-        elevatorPrimary.setInverted(false);
-        elevatorSecondary.setInverted(true);
+        intake.setInverted(MechConstants.kIntakeInverted);
     }
 
     public void setShooter(double setValue) {
@@ -25,6 +22,5 @@ public class MechSubsystem extends SubsystemBase{
         shooterPrimary.set(setValue);
         shooterSecondary.set(setValue);
         intake.set(setValue * .5);
-        shooterThird.set(setValue);
     }
 }

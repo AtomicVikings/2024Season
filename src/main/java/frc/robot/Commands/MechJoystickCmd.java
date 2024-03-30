@@ -8,7 +8,6 @@ import frc.robot.Subsystems.MechSubsystem;
 public class MechJoystickCmd extends Command {
     Supplier<Boolean> shooterIn, shooterOut;
     MechSubsystem mechSubsystem;
-    
 
     public MechJoystickCmd(MechSubsystem mechSubsystem,
                             Supplier<Boolean> shooterIn,
@@ -38,7 +37,6 @@ public class MechJoystickCmd extends Command {
     @Override
     public void end(boolean interrupted) {
         mechSubsystem.setShooter(0);
-        mechSubsystem.setElevator(0);
     }
 
     @Override
